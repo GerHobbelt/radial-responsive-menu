@@ -7,17 +7,22 @@ The menu system is customizable with some options. Built using jQuery version 1.
 
 [ <a href="http://agylardi.com/demo/radial-menu/" target="_blank">Live Demo</a> ]
 
+
 ## Author
+
 Agyl Rahmadi / Gyl (agyl.ardi@gmail.com)<br />
 **Notes**: *This is my first attemp to make a JQuery plugin. Any feedback will be much appreciated*
 
+
 ## Usage 
+
 Download the package and link the JS file (jquery .js file and this plugin file: `jquery.radialresponsivemenu.js`) and 
 CSS file (`radial-responsive-menu.css`) in your HTML.
 Also put *images* folder at the same directory with your HTML file.
 
 There are 3 menu levels available in the menu (class): `level-1`, `level-2`, `level-3`.
 The usage in basic HTML structure is as shown below: 
+
 ```html
 <nav id="radial-menu">
   <input type="button" id="toggle-radial" value="" >
@@ -51,11 +56,13 @@ The usage in basic HTML structure is as shown below:
 		</li>
 		<li><a href="#">Menu Item #6</a></li>
 		<li><a href="#">Menu Item #7</a></li>
-		<li><a href="#">Menu Item #8</a></li>						
+		<li><a href="#">Menu Item #8</a></li>
 	</ul>
 </nav>
 ```
+
 For initiation of the plugin, just include the following script tag in your HTML:
+
 ```html
 <script type="text/javascript">
   $(document).ready(function(){
@@ -64,16 +71,22 @@ For initiation of the plugin, just include the following script tag in your HTML
 </script>
 ```
 
+
 ## Options
+
 There are 9 options for this plugin. They are as the following:
 
+
 ### circleRadius
+
 `circleRadius` is the size of menu items (circle radius) in pixel.
 <br />*Default value*: `60`
 
 ----
 
+
 ### lv1_outerRing, lv2_outerRing & lv3_outerRing
+
 There are 2 *rings* which contains menu items in each menu levels: **Inner Ring** and **Outer Ring**.
 `lv1_outerRing`, `lv2_outerRing` & `lv3_outerRing` are options for disabling (false) or enabling (true) Outer Ring.
 If disabled then the menu level will only have 1 ring to be shown.
@@ -81,31 +94,41 @@ If disabled then the menu level will only have 1 ring to be shown.
 
 ----
 
+
 ### innerRing_items
+
 `innerRing_items` is the amount of menu items in **Inner Ring** on each menu level.
 <br />*Default value*: `3`
 
 ----
 
+
 ### outerRing_items
+
 `outerRing_items` is the amount of menu items in **Outer Ring** on each menu level.
 <br />*Default value*: `5`
 
 ----
 
+
 ### innerRing_radius
+
 `innerRing_radius` is the radius (in pixel) of **Inner Ring** from toggle object on each menu level.
 <br />*Default value*: `85`
 
 ----
 
+
 ### outerRing_radius
+
 `outerRing_radius` is the radius (in pixel) of **Outer Ring** from toggle object on each menu level.
 <br />*Default value*: `170`
 
 ----
 
+
 ### togglePosition
+
 `togglePosition` is the orientation of on which way the menu appears based on the `togglePosition` value. As the menu is targeted to be used in mobile screen, there
 are 4 value for this options: `top-left`, `top-right`, `bottom-right` and `bottom-left`.
 This option determine the appearance direction of menu items NOT the position of toggle button.
