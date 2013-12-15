@@ -19,10 +19,10 @@
 	height: 55px;
 	border-radius: 55px;
 	border: 1px solid #555555;
-	background: #ffffff url('../image/3-lines.png') no-repeat center center;
+	background: #ffffff url('../images/3-lines.png') no-repeat center center;
 }
 	#toggle-radial:hover, #toggle-radial:active, #toggle-radial.active {
-		background: #222222 url('../image/3-lines-white.png') no-repeat center center;
+		background: #222222 url('../images/3-lines-white.png') no-repeat center center;
 	}
 
 /* -------------- Menu Levels general styling -------------- */
@@ -44,7 +44,7 @@
 	text-decoration: none; 
 	color: #333333;
 }
-	/*#radial-menu ul li.have-subs > a { background: url("../image/multi-level-arrow.png") no-repeat right bottom; }*/
+	/*#radial-menu ul li.have-subs > a { background: url("../images/multi-level-arrow.png") no-repeat right bottom; }*/
 	#radial-menu ul li.active > a { color: #ffffff; }
 	#radial-menu ul li > a:hover, nav.square ul li > a:active {
 		color: #ffffff; 

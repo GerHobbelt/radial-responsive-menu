@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="live demo for Radial Responsive Menu jQuery plugin">
+		<meta name="author" content="Gyl">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" href="./css/live-demo.css">
+		<link rel="stylesheet" href="./css/radial-responsive-menu.css"> 
+		<script src="./javascripts/jquery.js"></script>
+		<script src="./js/jquery.radialresponsivemenu.js"></script>
+		<script>		
+			$(document).ready(function(){
+				var initScript = '',
+					options1 = '', options2 = '', options3 = '', options4 = '', options5 = '',
+					options6 = '', options7 = '', options8 = '', options9 = '',
+					stillDefault = true, lastOptions = false,
+					$tempSelect = $('#radial-menu').clone();
+								
+				$('#update-notif').hide();
+				$('#update').click( UpdateOptions );
+				InitRadialMenu();
+				
+				function InitRadialMenu(){
+					switch( $('#toggle-pos').val() ){		
+					case 'top-right':
+						$('.positioned').css({ 'top': '10px', 'right':'10px', 'bottom':'', 'left':'' });
+						break;
+					case 'bottom-right':
+						$('.positioned').css({ 'top': '', 'right':'10px', 'bottom':'10px', 'left':'' });
+						break;
+					case 'bottom-left':
+						$('.positioned').css({ 'top': '', 'right':'', 'bottom':'10px', 'left':'10px' });
+						break;
+					default:
+						$('.positioned').css({ 'top': '10px', 'right':'', 'bottom':'', 'left':'10px' });
+					}
+					
+					$('#radial-menu').radialResponsiveMenu({
+						'circleRadius': parseInt( $('#circle-radius').val(), 10),
+						'lv1_outerRing': $('#lv1-outer').attr('checked') ? true : false,
+						'lv2_outerRing': $('#lv2-outer').attr('checked') ? true : false,
+						'lv3_outerRing': $('#lv3-outer').attr('checked') ? true : false,
+						'innerRing_items': parseInt( $('#inner-items').val(), 10),
+						'outerRing_items': parseInt( $('#outer-items').val(), 10),
+						'innerRing_radius': parseInt( $('#inner-radius').val(), 10),
+						'outerRing_radius': parseInt( $('#outer-radius').val(), 10),
+						'togglePosition': $('#toggle-pos').val()
+					});
+					
+					initScript = '', options1 = '', options2 = '', options3 = '', options4 = '', 
+					options5 = '', options6 = '', options7 = '', options8 = '', options9 = '',
+					stillDefault = true;
+					
+					if( $('#toggle-pos').val() != 'top-left' ){
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions)
+								lastOptions = true;	
+						}	
+						options9 = "\n\t 'togglePosition': " + $('#toggle-pos').val();							
+					}
+
+					if( $('#outer-radius').val() != 170 ){
+						options8 = "\n\t 'outerRing_radius': " + $('#outer-radius').val();
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options8 += '';
+							}								
+						}else
+							options8 += ',';
+					}
+					
+					if( $('#inner-radius').val() != 85 ){
+						options7 = "\n\t 'innerRing_radius': " + $('#inner-radius').val();
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options7 += '';
+							}								
+						}else
+							options7 += ',';
+					}
+					
+					if( $('#outer-items').val() != 5 ){
+						options6 = "\n\t 'outerRing_items': " + $('#outer-items').val();
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options6 += '';
+							}								
+						}else
+							options6 += ',';
+
+					}
+					
+					if( $('#inner-items').val() != 3 ){
+						options5 = "\n\t 'innerRing_items': " + $('#inner-items').val();
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options5 += '';
+							}								
+						}else
+							options5 += ',';
+					}
+					
+					if( !$('#lv3-outer').attr('checked') ? true : false  ){
+						options4 = "\n\t 'lv3_outerRing': false " ;
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options4 += '';
+							}								
+						}else
+							options4 += ',';
+
+					}
+					
+					if( !$('#lv2-outer').attr('checked') ? true : false  ){
+						options3 = "\n\t 'lv2_outerRing': false " ;
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options3 += '';
+							}								
+						}else
+							options3 += ',';
+					}
+					
+					if( !$('#lv1-outer').attr('checked') ? true : false  ){
+						options2 = "\n\t 'lv1_outerRing': false " ;
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options2 += '';
+							}								
+						}else
+							options2 += ',';
+					}
+
+					if( $('#circle-radius').val() != 60 ){
+						options1 = "\n\t 'circleRadius': " + $('#circle-radius').val();
+						if( stillDefault ){
+							stillDefault = false;
+							if(!lastOptions){
+								lastOptions = true;	
+								options1 += '';
+							}								
+						}else
+							options1 += ',';
+					}
+	
+					if(stillDefault){
+						initScript = "$('#radial-menu').radialResponsiveMenu();";
+					}else{
+						initScript = "$('#radial-menu').radialResponsiveMenu({"+
+									options1 + options2 + options3 + options4 + options5 +
+									options6 + options7 + options8 + options9 +
+									"\n});";
+					}
+					$('#script-sample').val(initScript);
+				}
+						
+				function UpdateOptions(){
+					if( $('#toggle-radial').hasClass('active') ){
+						$('#toggle-radial').trigger('click');
+					}
+					$('#radial-menu').remove();
+					$tempSelect.appendTo('#demo-area');
+					$('#update-notif').fadeIn(500).fadeOut(500);
+					InitRadialMenu();
+				}		
+			});		
+		</script>
+		<title>RRM jQuery Plugin Demo</title>	
+	</head>
+	<body>
+		<div id="main-container">
+			<header>
+				<h1>Live Demo: Radial Responsive Menu - RRM (Alpha 1.0)</h1>
+			</header>
+			<div id="options-area">
+				<h2>RRM - jQuery plugin Options*</h2>
+				<form id="rrm-options">
+					<label for="circle-radius">Circle Radius</label>
+					<input id="circle-radius" type="text" value="60"><span>px</span><br>		
+					<label for="lv1-outer">Level-1 Outer Ring</label>
+					<input id="lv1-outer" type="checkbox" value="" checked=""><br>					
+					<label for="lv2-outer">Level-2 Outer Ring</label>
+					<input id="lv2-outer" type="checkbox" value="" checked=""><br>					
+					<label for="lv3-outer">Level-3 Outer Ring</label>
+					<input id="lv3-outer" type="checkbox" value="" checked=""><br>					
+					<label for="inner-items">Inner Ring Items</label>
+					<input id="inner-items" type="text" value="3"><span>menu items</span><br>					
+					<label for="outer-items">Outer Ring Items</label>
+					<input id="outer-items" type="text" value="5"><span>menu items</span><br>					
+					<label for="inner-radius">Inner Ring Radius</label>
+					<input id="inner-radius" type="text" value="85"><span>px</span><br>					
+					<label for="outer-radius">Outer Ring Radius</label>
+					<input id="outer-radius" type="text" value="170"><span>px</span><br>					
+					<label>Toggle Button Position</label>
+					<select id="toggle-pos" title="This options only changes the orientation of on which way the menu items would appears, not the position of toggle button. Position changes of toggle button in this page is for demonstration purpose only">
+						<option value="top-left">Top-Left</option>
+						<option value="top-right">Top-Right</option>
+						<option value="bottom-left">Bottom-Left</option>
+						<option value="bottom-right">Bottom-Right</option>
+					</select>
+					<button id="update" type="button">Update</button>				
+				</form>
+				<br>
+				<h3>Script to be included in HTML</h3>
+				<textarea readonly="" id="script-sample"> </textarea>
+				<p>* Please read <a href="index.html" target="_blank">here</a> or <a href="README.md" target="_blank">README.md</a> for explanation of the options</p>
+			</div>
+			<div id="demo-area">
+				<div id="update-notif" style="display: none;">Updated</div>
+				
+
+				<div id="radial-menu" class="positioned" style="top: 10px; left: 10px;">
+					<input type="button" id="toggle-radial" value="" class="">
+					<ul class="level-1 radial-first-items hide" style="display: none;">
+						<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #1</a></li>
+						<li class="radial-menu-items have-subs" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #2</a>
+							<ul class="level-2 hide radial-upper-items">
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.1</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.2</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.3</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.4</a></li>
+								<li class="radial-menu-items have-subs" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5</a>
+									<ul class="level-3 hide radial-upper-items">
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.1</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.2</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.3</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.4</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.5</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.6</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.7</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.5.8</a></li>
+									</ul>
+								</li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.6</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.7</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #2.8</a></li>
+							</ul>
+						</li>
+						<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #3</a></li>
+						<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #4</a></li>
+						<li class="radial-menu-items have-subs" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Menu Item #5</a>
+							<ul class="level-2 radial-upper-items hide">
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.1</a></li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.2</a></li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.3</a></li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.4</a></li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.5</a></li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.6</a></li>
+								<li class="radial-menu-items have-subs" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7</a>
+									<ul class="level-3 radial-upper-items hide">
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.1</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.2</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.3</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.4</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.5</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.6</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.7</a></li>
+										<li class="radial-menu-items" style="left: 0px; top: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.7.8</a></li>
+									</ul>
+								</li>
+								<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Sub-Menu Item #5.8</a></li>
+							</ul>
+						</li>
+						<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #6</a></li>
+						<li class="radial-menu-items" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #7</a></li>
+						<li class="radial-menu-items have-subs" style="left: 0px; top: 0px; opacity: 1;"><a href="#" class="radial-menu-links">Menu Item #8</a>
+							<ul class="level-2 hide radial-upper-items">
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.1</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.2</a></li>
+								<li class="radial-menu-items have-subs" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3</a>
+									<ul class="level-3 hide radial-upper-items">
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.1</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.2</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.3</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.4</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.5</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.6</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.7</a></li>
+										<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.3.8</a></li>
+									</ul>
+								</li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.4</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.5</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.6</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.7</a></li>
+								<li class="radial-menu-items" style="top: 0px; left: 0px;"><a href="#" class="radial-menu-links">Sub-Menu Item #8.8</a></li>
+							</ul>
+						</li>						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
