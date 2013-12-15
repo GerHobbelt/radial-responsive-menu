@@ -8,12 +8,19 @@
 
 /*--------------  SAFELY CUSTOMIZABLE - Visual styling for menu elements -------------------*/
 
-.active { background-color: #222222 !important; color: #ffffff !important; z-index: 15; }
+.active { 
+	background-color: #222222 !important; 
+	color: #ffffff !important; 
+	z-index: 15; 
+}
+
 #radial-menu {
 	font-size: 0.8em;
 }
 
+
 /*--------------  Toggle Button -------------- */
+
 #toggle-radial {
 	width: 55px;
 	height: 55px;
@@ -25,36 +32,66 @@
 		background: #222222 url('../images/3-lines-white.png') no-repeat center center;
 	}
 
+
 /* -------------- Menu Levels general styling -------------- */
-#radial-menu ul.level-1 { font-size: 1em; }
-#radial-menu ul.level-2 { font-size: 0.9em; }
-#radial-menu ul.level-3 { font-size: 0.9em; }
+
+#radial-menu ul.level-1 { 
+	font-size: 1em; 
+}
+#radial-menu ul.level-2 { 
+	font-size: 0.9em; 
+}
+#radial-menu ul.level-3 { 
+	font-size: 0.9em; 
+}
+
 
 /* -------------- Menu Items -------------- */
+
 #radial-menu > ul li {
 	background: #ffffff;
 	border: 1px solid #555555;
 	box-shadow: 0px 0px 3px #999999;			
 }
-	#radial-menu > ul li:hover { background-color: #222222; }
-	#radial-menu ul li.have-subs { border: 2px solid #FF4900; }
+	#radial-menu > ul li:hover { 
+		background-color: #222222; 
+	}
+	#radial-menu ul li.have-subs { 
+		border: 2px solid #FF4900; 
+	}
 
 /* -------------- Menu Items - Links -------------- */
 #radial-menu ul li a { 
 	text-decoration: none; 
 	color: #333333;
 }
-	/*#radial-menu ul li.have-subs > a { background: url("../images/multi-level-arrow.png") no-repeat right bottom; }*/
-	#radial-menu ul li.active > a { color: #ffffff; }
+	#radial-menu ul li.have-subs > a {
+	 	background: url("../images/multi-level-arrow.png") no-repeat right bottom; 
+	}
+	#radial-menu ul li.active > a { 
+		color: #ffffff; 
+	}
 	#radial-menu ul li > a:hover, nav.square ul li > a:active {
 		color: #ffffff; 
 	}
 
+
 /*--------------------------- RESTRICTED - Should not be modified ---------------------------*/
-input:focus { outline: none; }
-.hide { display: none !important; }
-.show { display: inherit !important; }
-/*.disable {  opacity: 0.2; } */
+	
+input:focus { 
+	outline: none; 
+}
+.hide { 
+	display: none !important; 
+}
+.show { 
+	display: inherit !important; 
+}
+/*
+.disable {  
+	opacity: 0.2; 
+} 
+*/
 
 #toggle-radial {
 	cursor: pointer;
@@ -98,3 +135,4 @@ input:focus { outline: none; }
 	position: relative;
 	left: 50%;
 }*/
+
